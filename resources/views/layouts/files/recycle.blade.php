@@ -2,12 +2,18 @@
 
 @section('main-styles')
     <link href="{{asset('css/jquery.datatables.css')}}" rel="stylesheet">
+    <link href="{{asset('intro/introjs.min.css')}}" rel="stylesheet">
+@endsection
+
+
+@section('help')
+    <a href="javascript:void(0);" class="pull-right" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i></a>
 @endsection
 
 @section('main-section')
     <div class="contentpanel">
         <div class="row">
-            <div class="col-sm-12 col-md-12">
+            <div class="col-sm-12 col-md-12"  data-step="1" data-intro="List of deleted files" data-position='right'>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="results-list">
@@ -33,6 +39,8 @@
                                                    }
                                                    else{event.preventDefault();
                                                    }"
+
+                                           data-step="2" data-intro="To restore click on the restore icon" data-position='right'
                                         ><i class="fa fa-recycle"></i>
                                         </a>
                                     </div>
@@ -46,3 +54,9 @@
         </div><!-- row -->
     </div>
 @endsection
+
+@section('custom-scripts')
+    <script src="{{asset('intro/intro.min.js')}}"></script>
+@endsection
+
+

@@ -5,7 +5,14 @@
     <link rel="stylesheet" href="{{asset('css/jquery.tagsinput.css')}}" />
     <link rel="stylesheet" href="{{asset('css/colorpicker.css')}}" />
     <link rel="stylesheet" href="{{asset('css/dropzone.css')}}" />
+    <link href="{{asset('intro/introjs.min.css')}}" rel="stylesheet">
 @endsection
+
+
+@section('help')
+    <a href="javascript:void(0);" class="pull-right" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i></a>
+@endsection
+
 
 @section('main-section')
     <div class="panel panel-default">
@@ -30,20 +37,20 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control"    data-step="1" data-intro="Enter user email" data-position='right'>
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label">First Name</label>
-                            <input type="text" name="firstname" class="form-control">
+                            <input type="text" name="firstname" class="form-control"     data-step="2" data-intro="Enter user first name" data-position='right'>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
-                            <input type="text" name="lastname" class="form-control">
+                            <input type="text" name="lastname" class="form-control"     data-step="3" data-intro="Enter user last name" data-position='right'>
                         </div>
                     </div>
                 </div>
@@ -52,7 +59,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">User Role</label>
-                                <select class="select2" class="form-control" name="role_id[]" data-placeholder="Select User Role...">
+                                <select class="select2" class="form-control" name="role_id[]" data-placeholder="Select User Role..." data-step="4" data-intro="Select the user role from the dropdown" data-position='right'>
                                     <option value=""></option>
                                     @foreach($role as $r)
                                         <option value="{{$r->id}}">{{$r->name}}</option>
@@ -65,7 +72,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">Repositories</label>
-                            <select class="select2" name="repository_id[]" class="form-control" multiple data-placeholder="Select User Repositories...">
+                            <select class="select2" name="repository_id[]" class="form-control" multiple data-placeholder="Select User Repositories..." data-step="5" data-intro="Select the repository  from the dropdown" data-position='right'>
                                 <option value=""></option>
                                 @foreach($repositories as $r)
                                     <option value="{{$r->id}}">{{$r->name}}</option>
@@ -79,13 +86,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" class="form-control">
+                            <input type="password" name="password" class="form-control"  data-step="6" data-intro="Type user password" data-position='right'>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">Confirm Password</label>
-                            <input type="password"  name="password_confirmation" class="form-control">
+                            <input type="password"  name="password_confirmation" class="form-control" data-step="7" data-intro="Match user password" data-position='right'>
                         </div>
                     </div>
                 </div>
@@ -122,5 +129,10 @@
 @endsection
 
 
+
+
+@section('custom-scripts')
+    <script src="{{asset('intro/intro.min.js')}}"></script>
+@endsection
 
 

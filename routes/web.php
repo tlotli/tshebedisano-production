@@ -11,6 +11,16 @@
 |
 */
 
+use App\File;
+
+Route::get('/test' , function() {
+    $data = File::select("policy_number")
+//        ->where("policy_number","LIKE","%{$request->input('query')}%")
+        ->get();
+
+    dd($data);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,3 +56,5 @@ Route::get('deleted_files'  , 'FilesController@deleted_files')->name('deleted_fi
 Route::post('restore_files/{id}' , 'FilesController@restore_files')->name('restore_files');
 
 Route::get('logs' , 'LogController@logs')->name('logs');
+
+Route::get('autocomplete', 'AutoCompleteController@search')->name('autocomplete');

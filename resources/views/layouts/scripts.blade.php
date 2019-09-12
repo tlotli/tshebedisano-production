@@ -1,4 +1,6 @@
-<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
+{{--<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>--}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>--}}
 <script src="{{asset('js/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/modernizr.min.js')}}"></script>

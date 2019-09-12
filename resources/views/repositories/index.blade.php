@@ -2,13 +2,18 @@
 
 @section('main-styles')
     <link href="{{asset('css/jquery.datatables.css')}}" rel="stylesheet">
+    <link href="{{asset('intro/introjs.min.css')}}" rel="stylesheet">
+@endsection
+
+@section('help')
+    <a href="javascript:void(0);" class="pull-right" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i></a>
 @endsection
 
 @section('main-section')
-    <div class="panel panel-default">
+    <div class="panel panel-default" data-step="1" data-intro="Use the table to manage repository  Here you can add and edit repositories" data-position='right'>
         <div class="panel-heading">
             @can('repository.create' , \Illuminate\Support\Facades\Auth::user() )
-                <a href="{{route('repositories.create')}}" class="btn btn-primary">Add Repository <i class="fa fa-plus"></i></a>
+                <a href="{{route('repositories.create')}}" class="btn btn-primary" data-step="2" data-intro="Click the button to navigate to the create repository page" data-position='right'>Add Repository <i class="fa fa-plus"></i></a>
             @endcan
         </div>
         <div class="panel-body">
@@ -33,7 +38,7 @@
                             <td>{{$r->created_at}}</td>
                             <td>
                                 @can('repository.update' , \Illuminate\Support\Facades\Auth::user() )
-                                    <a href="{{route('repositories.edit' , ['id' => $r->id])}}" class="btn btn-xs btn-success">Edit</a>
+                                    <a href="{{route('repositories.edit' , ['id' => $r->id])}}" class="btn btn-xs btn-success"  data-step="3" data-intro="The edit button can be used to modify the repository" data-position='right'>Edit</a>
                                 @endcan
                             </td>
                         </tr>
@@ -78,6 +83,10 @@
     </script>
 @endsection
 
+
+@section('custom-scripts')
+    <script src="{{asset('intro/intro.min.js')}}"></script>
+@endsection
 
 
 

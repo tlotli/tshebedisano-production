@@ -86,6 +86,8 @@ class FilesController extends Controller
 						->get();
 
 			$repository = Repository::find($id);
+
+//			dd($files);
 			$title = 'Search Results';
 			$font_style = "fa fa-file-pdf-o";
 

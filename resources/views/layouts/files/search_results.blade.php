@@ -12,10 +12,10 @@
                 @csrf
                 <div class="col-sm-4 col-md-3">
                     <h4 class="subtitle mb5">Search</h4>
-                    <input type="text" value="" name="policy_number" placeholder="Policy Number" class="form-control">
+                    <input type="text" id="search" name="policy_number" placeholder="Policy Number" class="form-control">
                     <div class="mb20"></div>
                     <div class="input-group">
-                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                        <input  type="submit" class="btn btn-primary btn-block" value="Search">
                     </div>
                     <br>
                 </div><!-- col-sm-4 -->
@@ -64,6 +64,25 @@
         </div><!-- row -->
     </div>
 @endsection
+
+
+
+@section('custom-scripts')
+    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete') }}";
+        $('#search').typeahead({
+            source:  function (term, process) {
+                return $.get(route, { term: term }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+@endsection
+
 
 
 
