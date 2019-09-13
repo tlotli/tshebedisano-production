@@ -105,6 +105,7 @@
     </div>
 @endsection
 
+
 @section('custom-scripts')
     <script src="{{asset('js/jquery.autogrow-textarea.js')}}"></script>
     <script src="{{asset('js/bootstrap-timepicker.min.js')}}"></script>
@@ -130,9 +131,5 @@
 
 
 
-
-@section('custom-scripts')
-    <script src="{{asset('intro/intro.min.js')}}"></script>
-@endsection
 
 
