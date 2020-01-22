@@ -24,7 +24,7 @@
                                     </a>
                                     <div class="media-body">
 
-                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{$f->name}}</a></h4>
+                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{ \Illuminate\Support\Str::substr($f->name ,10) }}</a></h4>
                                         <small class="text-muted">Policy Number: {{$f->policy_number}}</small><br>
                                         <small class="text-muted">Created: {{$f->created_at}}</small><br>
                                         <small class="text-muted">Modified: {{$f->updated_at}}</small>

@@ -35,7 +35,7 @@
                                         <i class="fa fa-file-pdf-o" style="font-size: 30px; color : red"></i>
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{$f->name}}</a></h4>
+                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{ \Illuminate\Support\Str::substr($f->name ,10) }}</a></h4>
                                         {{--<small class="text-muted">Type: JPG Image</small><br>--}}
                                         <small class="text-muted">Policy Number: {{$f->policy_number}}</small><br>
                                         <small class="text-muted">Created: {{$f->created_at}}</small><br>
@@ -60,6 +60,11 @@
                         </div><!-- results-list -->
                     </div><!-- panel-body -->
                 </div><!-- panel -->
+
+                <ul class="pagination pagination-split text-center">
+                    {{ $files->links() }}
+                </ul>
+
             </div><!-- col-sm-8 -->
         </div><!-- row -->
     </div>

@@ -5,9 +5,9 @@
     <link href="{{asset('intro/introjs.min.css')}}" rel="stylesheet">
 @endsection
 
-@section('help')
-    <a href="javascript:void(0);" class="pull-right" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i></a>
-@endsection
+{{--@section('help')--}}
+{{--    <a href="javascript:void(0);" class="pull-right" onclick="javascript:introJs().start();"><i class="fa fa-question-circle"></i></a>--}}
+{{--@endsection--}}
 
 @section('main-section')
 

@@ -52,7 +52,7 @@
                                         <i class="fa fa-file-pdf-o" style="font-size: 30px; color : red"></i>
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{$f->name}}</a></h4>
+                                        <h4 class="filename text-primary"><a href="{{ Storage::disk('local')->url('public/documents/'.$f->location) }}">{{ \Illuminate\Support\Str::substr($f->name, 10) }}</a></h4>
                                         {{--<small class="text-muted">Type: JPG Image</small><br>--}}
                                         <small class="text-muted">Policy Number: {{$f->policy_number}}</small><br>
                                         <small class="text-muted">Created: {{$f->created_at}}</small><br>
@@ -85,6 +85,14 @@
                         </div><!-- results-list -->
                     </div><!-- panel-body -->
                 </div><!-- panel -->
+
+
+
+                <ul class="pagination pagination-split text-center">
+                    {{ $files->links() }}
+                </ul>
+
+
             </div>
 
         </div><!-- row -->
@@ -107,25 +115,47 @@
 
             <div class="col-md-8">
 
-                @foreach($notes as $n)
-                    @if( ($notes_count < 1) )
-                        <h3>No notes posted</h3>
-                        @else
-                            <div class="blog-item blog-quote" data-step="10" data-intro="Captured notes will show up here" data-position='right'>
-                                <div class="quote quote-primary">
-                                    <a href="">
-                                        {{$n->notes}}
-                                        <small class="quote-author">- {{$n->user->firstname . ' ' . $n->user->lastname}}</small>
-                                    </a>
-                                </div>
-                                <div class="blog-details">
-                                    <ul class="blog-meta">
-                                        <li>Submitted: <a href="">{{$n->created_at->diffForHumans()}}</a></li>
-                                    </ul>
-                                </div><!-- blog-details -->
-                            </div>
-                    @endif
-                @endforeach
+
+
+{{--                            <div class="blog-item blog-quote" data-step="10" data-intro="Captured notes will show up here" data-position='right'>--}}
+{{--                                <div class="quote quote-primary">--}}
+{{--                                    <a href="">--}}
+{{--                                        {{$n->notes}}--}}
+{{--                                        <small class="quote-author">- {{$n->user->firstname . ' ' . $n->user->lastname}}</small>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                                <div class="blog-details">--}}
+{{--                                    <ul class="blog-meta">--}}
+{{--                                        <li>Submitted: <a href="">{{$n->created_at->diffForHumans()}}</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div><!-- blog-details -->--}}
+{{--                            </div>--}}
+
+                        <div class="table-responsive">
+                            <table class="table table-primary mb30">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th style="width:60%">Notes</th>
+                                    <th>By</th>
+                                    <th>At</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($notes as $n)
+                                    <tr>
+                                        <td>{{$loop->index  + 1}}</td>
+                                        <td>{{$n->notes}}</td>
+                                        <td>{{$n->user->firstname . ' ' . $n->user->lastname}}</td>
+                                        <td>{{$n->created_at->diffForHumans()}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
 
 
             </div>

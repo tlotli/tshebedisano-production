@@ -20,9 +20,9 @@ class FilesController extends Controller
 
 	public function repository_files($id) {
 		$repository = Repository::find($id);
-		$files = File::where('repository_id' , $id)->get();
+		$files = File::where('repository_id' , $id)->paginate(5);
 		$title = $repository->name;
-		$notes = Note::where('repository_id' , $id)->get();
+		$notes = Note::where('repository_id' , $id)->orderBy('created_at' , 'DESC')->get();
 		$notes_count = Note::where('repository_id' , $id)->count();
 		$font_style = "fa fa-file-pdf-o";
 //		dd($notes);
@@ -83,7 +83,7 @@ class FilesController extends Controller
 
 			$files = File::where('repository_id' , $id)
 						->where('policy_number' , strtoupper($request->policy_number) )
-						->get();
+						->paginate(5);
 
 			$repository = Repository::find($id);
 
