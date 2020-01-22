@@ -37,20 +37,20 @@
                                     <a href="{{route('roles.edit' , ['id' => $r->id])}}" class="btn btn-xs btn-success">Edit</a>
                                 @endcan
 
-                                <form id="delete-role-{{$r->id}}" method="post" action="{{route('roles.destroy' , ['id' => $r->id])}}" style="display: none">
-                                    {{csrf_field()}}
-                                    {{method_field('DELETE')}}
-                                </form>
+{{--                                <form id="delete-role-{{$r->id}}" method="post" action="{{route('roles.destroy' , ['id' => $r->id])}}" style="display: none">--}}
+{{--                                    {{csrf_field()}}--}}
+{{--                                    {{method_field('DELETE')}}--}}
+{{--                                </form>--}}
 
 
-                                <a href="" class="btn btn-xs btn-danger"
-                                   onclick="if(confirm('Are you sure you want to delete role ?')) {
-                                           event.preventDefault(); document.getElementById('delete-role-{{$r->id}}').submit();
-                                           }
-                                           else{event.preventDefault();
-                                           }">
-                                    Delete
-                                </a>
+{{--                                <a href="" class="btn btn-xs btn-danger"--}}
+{{--                                   onclick="if(confirm('Are you sure you want to delete role ?')) {--}}
+{{--                                           event.preventDefault(); document.getElementById('delete-role-{{$r->id}}').submit();--}}
+{{--                                           }--}}
+{{--                                           else{event.preventDefault();--}}
+{{--                                           }">--}}
+{{--                                    Delete--}}
+{{--                                </a>--}}
                             </td>
                         </tr>
                     @endforeach
